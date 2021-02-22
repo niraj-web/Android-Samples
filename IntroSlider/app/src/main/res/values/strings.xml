@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">IntroSlider</string>
+    <string name="title_activity_Welcome">Home Screen</string>
+    <string name="next"> Next</string>
+    <string name="skip">Skip</string>
+    <string name="start">Got It</string>
+
+    <string name="slide_1_title">Hello Food</string>
+    <string name="slide_1_desc">The easiest way to order food</string>
+
+    <string name="slide_2_title">Movie Tickets</string>
+    <string name="slide_2_desc">Book movie tickets</string>
+
+    <string name="slide_3_title">Great Discounts</string>
+    <string name="slide_3_desc">Best discounts on the product</string>
+
+    <string name="slide_4_title">World Travel</string>
+    <string name="slide_4_desc">The easiest way to order food</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
+
+
+</resources>

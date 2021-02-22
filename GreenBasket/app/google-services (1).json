@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "212610516297",
+    "project_id": "greenbasket-80428",
+    "storage_bucket": "greenbasket-80428.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:212610516297:android:029fd4f0ea2cabfb538698",
+        "android_client_info": {
+          "package_name": "com.example.greenbasket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "212610516297-kp2hddl5pnv0h31eh68iq2tiqrn0jbvb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.greenbasket",
+            "certificate_hash": "3fb01263eb93892218c5b9901ce00212d2d91c75"
+          }
+        },
+        {
+          "client_id": "212610516297-jum1mhqm9ktrn6hd7jom32gllr1q1uqv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJeJ3y_wfTZE7XYRCzKbH_gykFysK6Kdk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "212610516297-jum1mhqm9ktrn6hd7jom32gllr1q1uqv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

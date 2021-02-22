@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Checkbox</string>
+
+
+    <string-array name="item_fruits">
+
+        <item>Apple</item>
+        <item>Banana</item>
+        <item>Mango</item>
+        <item>Orange</item>
+        <item>Cherry</item>
+        <item>Grape</item>
+        <item>Coconut</item>
+        <item>Blueberry</item>
+        <item>Strawberry</item>
+        <item>Pear</item>
+        <item>Watermelon</item>
+
+    </string-array>
+
+    <string-array name="item_price">
+
+        <item>100</item>
+        <item>40</item>
+        <item>55</item>
+        <item>25</item>
+        <item>80</item>
+        <item>120</item>
+        <item>15</item>
+        <item>30</item>
+        <item>70</item>
+        <item>85</item>
+        <item>75</item>
+
+    </string-array>
+</resources>
