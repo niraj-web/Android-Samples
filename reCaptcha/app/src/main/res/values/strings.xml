@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">reCaptcha</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="feedback">Feedback</string>
+    <string name="hint_feedback">Enter your feedback here!</string>
+    <string name="btn_send">Send Feedback</string>
+    <string name="title_form">Send us some feedback!</string>
+    <string name="desc_form">Have a suggestion? Fill out the form  below and we’ll take a look!</string>
+    <string name="message_feedback_done">Thanks for your feedback. We\'ll get back to you soon!</string>
+</resources>
