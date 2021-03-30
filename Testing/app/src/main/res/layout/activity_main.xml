@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/liteWhite"
+    tools:context=".Activities.MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/ll1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/blank"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white" />
+
+                <TextView
+                    android:id="@+id/tvProjectName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                    android:layout_marginLeft="10dp"
+                    android:padding="7dp"
+                    android:hint="PROJECT NAME*"
+                    android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/ll1"
+                android:background="@color/white"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvEmployee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="EMPLOYEE NAME*"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/white" />
+
+                <TextView
+                    android:id="@+id/tvEmployeeSelect"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                    android:background="@color/white"
+                    android:padding="7dp"
+                    android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/ll2"
+                android:background="@color/white"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvWorkType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:hint="WORK TYPE*"/>
+
+                <TextView
+                    android:id="@+id/tvWorkTypeSelect"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                    android:text="--Select--"
+                    android:layout_marginLeft="10dp"
+                    android:padding="7dp"
+                    android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/ll3"
+                android:background="@color/white"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvaddition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:hint="ADDITION / REWORK*"/>
+
+                <TextView
+                    android:id="@+id/tvadditionSelect"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                    android:text="--Select--"
+                    android:layout_marginLeft="10dp"
+                    android:padding="7dp"
+                    android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/ll4"
+                android:background="@color/white"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:hint="SELECT DATE*"/>
+
+                <TextView
+                    android:id="@+id/tvDateSelect"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                    android:text="--Select--"
+                    android:layout_marginLeft="10dp"
+                    android:padding="7dp"
+                    android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/ll5"
+                android:background="@color/white"
+                android:layout_marginRight="220dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvEtsHr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:layout_marginLeft="5dp"
+                    android:hint="ETS TIME IN HOURS*" />
+
+                <TextView
+                    android:id="@+id/tvHour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    app:layout_constraintLeft_toRightOf="@id/tvEtsHr"
+                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                    android:text="HH"
+                    android:layout_marginLeft="10dp"
+                    android:padding="7dp"
+                    android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/ll5"
+                android:background="@color/white"
+                android:layout_marginLeft="210dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvEtsMin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:layout_marginLeft="5dp"
+                    android:hint="ETS TIME IN Minutes*" />
+
+                <TextView
+                    android:id="@+id/tvMin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    app:layout_constraintLeft_toRightOf="@id/tvEtsHr"
+                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                    android:text="MM"
+                    android:layout_marginLeft="10dp"
+                    android:padding="7dp"
+                    android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/ll7"
+                android:background="@color/white"
+                android:layout_marginRight="220dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvClientHr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:layout_marginLeft="5dp"
+                    android:hint="CLIENT TIME IN HOURS*" />
+
+                <TextView
+                    android:id="@+id/tvClientHour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    app:layout_constraintLeft_toRightOf="@id/tvEtsHr"
+                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                    android:text="HH"
+                    android:layout_marginLeft="10dp"
+                    android:padding="7dp"
+                    android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/ll7"
+                android:background="@color/white"
+                android:layout_marginLeft="210dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvClientMin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:layout_marginLeft="5dp"
+                    android:hint="CLIENT TIME IN MINUTES*" />
+
+                <TextView
+                    android:id="@+id/tvSelectClientMin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    app:layout_constraintLeft_toRightOf="@id/tvEtsHr"
+                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                    android:text="MM"
+                    android:layout_marginLeft="10dp"
+                    android:padding="7dp"
+                    android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="100dp"
+                android:layout_below="@id/ll9"
+                android:background="@color/white"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/tvtask"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="start"
+                    android:hint="TASK*" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/saveBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll10"
+                android:text="SAVE"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="260dp"
+                android:layout_marginRight="10dp"/>
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>
