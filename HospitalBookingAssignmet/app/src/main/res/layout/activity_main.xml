@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="BOOK AN APPOINTMENT"
+        android:gravity="center"
+        android:textSize="25sp"/>
+
+    <TextView
+        android:id="@+id/etChooseClinic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:hint="Choose Clinic"
+        android:textColorHint="@color/black"
+        android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"/>
+
+    <TextView
+        android:id="@+id/etChooseDoctor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etChooseClinic"
+        android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+        android:hint="Choose Doctor"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"/>
+
+    <TextView
+        android:id="@+id/etChooseDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etChooseDoctor"
+        android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+        android:hint="Choose Date"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"/>
+
+    <EditText
+        android:id="@+id/message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etChooseDate"
+        android:background="@color/gray"
+        android:text="Message"
+        android:gravity="start"
+        android:minHeight="150dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"/>
+
+    <Button
+        android:id="@+id/submit"
+        android:text="Submit Request"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/message"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"/>
+
+
+</RelativeLayout>
