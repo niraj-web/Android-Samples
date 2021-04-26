@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PULLMAN SHARJAH"
+        android:textStyle="italic"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        android:background="@drawable/hotel"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/image"
+        android:layout_marginTop="10dp"
+        android:text="Deluxe Room"
+        android:textColor="@color/red"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/amenities"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/details"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/red"
+        android:text="AMENITIES"/>
+
+    <TextView
+        android:id="@+id/plane"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@id/amenities"
+        android:background="@drawable/plane"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/planeText"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/amenities"
+                app:layout_constraintLeft_toRightOf="@id/plane"
+                android:layout_marginLeft="10dp"
+                android:text="Airport Pick-up"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/Wifi"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintTop_toBottomOf="@id/amenities"
+                app:layout_constraintLeft_toRightOf="@id/planeText"
+                app:layout_constraintRight_toLeftOf="@id/wifiText"
+                android:background="@drawable/wifi"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/wifiText"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/amenities"
+                app:layout_constraintLeft_toRightOf="@id/Wifi"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginLeft="10dp"
+                android:text="Hi-Speed Wi-Fi"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/Luggage"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintTop_toBottomOf="@id/wifiText"
+                android:background="@drawable/storage"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:id="@+id/LuggageText"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/planeText"
+                app:layout_constraintLeft_toRightOf="@id/Luggage"
+                android:text="Luggage Storage"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"/>
+
+
+            <TextView
+                android:id="@+id/Room"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintTop_toBottomOf="@id/wifiText"
+                app:layout_constraintLeft_toRightOf="@id/LuggageText"
+                app:layout_constraintRight_toLeftOf="@id/RoomText"
+                android:background="@drawable/ic_baseline_room_service_24"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:id="@+id/RoomText"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/planeText"
+                app:layout_constraintLeft_toRightOf="@id/Luggage"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Room Service"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/suitable"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/RoomText"
+                android:layout_marginTop="30dp"
+                android:text="Suitable For"
+                android:textSize="15sp"
+                app:layout_constraintRight_toLeftOf="@id/AdultQ"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/AdultQ"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@id/suitable"
+                app:layout_constraintRight_toLeftOf="@id/AdultLogo"
+                android:gravity="end"
+                android:text="1"
+                android:layout_marginTop="30dp"
+                app:layout_constraintTop_toBottomOf="@id/RoomText"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/AdultLogo"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:layout_constraintLeft_toRightOf="@id/AdultQ"
+                app:layout_constraintRight_toLeftOf="@id/ChildQ"
+                app:layout_constraintTop_toBottomOf="@id/RoomText"
+                android:background="@drawable/ic_baseline_person_outline_24"
+                android:layout_marginTop="30dp"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/ChildQ"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="1"
+                app:layout_constraintLeft_toRightOf="@id/AdultLogo"
+                app:layout_constraintRight_toLeftOf="@id/ChildLogo"
+                app:layout_constraintTop_toBottomOf="@id/RoomText"
+                android:layout_marginTop="30dp"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/ChildLogo"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:layout_constraintLeft_toRightOf="@id/ChildQ"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/RoomText"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/ic_baseline_person_outline_24"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/Available"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/ChildLogo"
+                android:layout_marginTop="20dp"
+                android:text="Available Rooms"/>
+
+            <TextView
+                android:id="@+id/rooms"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintTop_toBottomOf="@id/ChildLogo"
+                android:layout_marginTop="20dp"
+                app:layout_constraintLeft_toRightOf="@id/Available"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="20dp"
+                android:text="10"
+                android:gravity="end"
+                app:layout_constraintRight_toLeftOf="@id/Roomss"/>
+
+            <TextView
+                android:id="@+id/Roomss"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@id/rooms"
+                app:layout_constraintTop_toBottomOf="@id/ChildLogo"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Rooms"
+                android:layout_marginRight="10dp"
+                android:gravity="end"/>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/Roomss"/>
+
+            <TextView
+                android:id="@+id/SelectRoom"
+                android:layout_width="310dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/Roomss"
+                android:layout_marginTop="20dp"
+                android:text="Select No. of Rooms" />
+
+            <Button
+                android:id="@+id/plus"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintTop_toBottomOf="@id/Roomss"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                app:layout_constraintLeft_toRightOf="@id/SelectRoom"
+                android:background="@drawable/ic_baseline_add_box_24"
+                app:layout_constraintRight_toLeftOf="@id/number"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/number"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintTop_toBottomOf="@id/Roomss"
+                app:layout_constraintLeft_toRightOf="@id/plus"
+                app:layout_constraintRight_toLeftOf="@id/minus"
+                android:text="0"
+                android:gravity="center"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"/>
+
+            <Button
+                android:id="@+id/minus"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintTop_toBottomOf="@id/Roomss"
+                app:layout_constraintLeft_toRightOf="@id/number"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/ic_baseline_indeterminate_check_box_24"/>
+
+            <View
+                android:id="@+id/vieww"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/minus"/>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@id/vieww"/>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:layout_constraintTop_toBottomOf="@id/tab_layout"
+                android:layout_marginTop="10dp" />
+
+            <Button
+                android:id="@+id/buyNow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/pager"
+                android:text="Proceed"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
