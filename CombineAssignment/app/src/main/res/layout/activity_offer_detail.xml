@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.OfferDetailActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvTittle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hello31"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"/>
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/red"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/tvTittle"/>
+
+            <ImageView
+                android:id="@+id/dentalofferImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/view5"
+                android:background="@drawable/border"/>
+
+            <TextView
+                android:id="@+id/tagline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dentalofferImage"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/red"/>
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tagline"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:id="@+id/offerPrice"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="@string/hello34"
+                android:layout_below="@id/description"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/offerPriceText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/description"
+                android:layout_marginTop="10dp"
+                android:gravity="end"
+                android:layout_marginLeft="150dp"/>
+
+            <TextView
+                android:id="@+id/saving"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/offerPrice"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/validTill"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/offerPrice"
+                android:layout_marginLeft="300dp"
+                android:text="@string/hello37"
+                android:layout_marginRight="10dp"
+                android:gravity="end"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/validDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="270dp"
+                android:gravity="end"
+                android:layout_below="@+id/validTill"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_below="@id/validDate">
+
+                <TextView
+                    android:id="@+id/Selectroom"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    tools:ignore="MissingConstraints"
+                    android:text="@string/hello39"
+                    android:textSize="15sp"
+                    android:gravity="fill_vertical"
+                    android:layout_marginLeft="10dp"/>
+
+                <Button
+                    android:id="@+id/minus"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_baseline_indeterminate_check_box_24"
+                    android:layout_marginTop="5dp"
+                    android:onClick="decrement"
+                    app:layout_constraintLeft_toRightOf="@id/Selectroom"
+                    app:layout_constraintRight_toLeftOf="@id/number"
+                    tools:ignore="MissingConstraints" />
+
+                <TextView
+                    android:id="@+id/number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:paddingTop="5dp"
+                    app:layout_constraintLeft_toRightOf="@id/minus"
+                    app:layout_constraintRight_toLeftOf="@id/plus"
+                    android:inputType="number"
+                    android:text="0"
+                    android:gravity="center"
+                    tools:ignore="MissingConstraints" />
+
+                <Button
+                    android:id="@+id/plus"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:onClick="increment"
+                    android:background="@drawable/ic_baseline_add_box_24"
+                    app:layout_constraintLeft_toRightOf="@id/number"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:ignore="MissingConstraints" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/vie"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/constraint4"/>
+
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/vie"/>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@id/tab_layout"
+                android:layout_marginTop="10dp" />
+
+            <Button
+                android:id="@+id/buyNow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hello47"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_below="@+id/pager"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

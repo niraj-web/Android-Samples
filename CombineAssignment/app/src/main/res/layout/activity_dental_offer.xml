@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.DentalOfferActivity">
+
+    <TextView
+        android:id="@+id/dentaltitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hello27"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_marginTop="5dp"/>
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/red"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/dentaltitle"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/DentalRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view3"
+        android:layout_marginTop="40dp"/>
+
+
+</RelativeLayout>
