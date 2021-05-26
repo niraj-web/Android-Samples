@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.OtpActivity">
+
+    <TextView
+        android:id="@+id/tvOtpTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter OTP received on your email ID:"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:id="@+id/etEnterOtp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvOtpTitle"
+        android:hint="Enter OTP"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="120dp"/>
+
+    <Button
+        android:id="@+id/btnVerify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etEnterOtp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="100dp"
+        android:text="Verify"
+        android:gravity="center"
+        android:backgroundTint="@color/orange"/>
+
+
+</RelativeLayout>

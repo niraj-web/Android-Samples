@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.MenuActivity">
+    
+    <TextView
+        android:id="@+id/tvEvent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="EVENT"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:id="@+id/tvEventTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:text="IMPRESSIONS"
+        android:layout_marginLeft="80dp"/>
+
+    <TextView
+        android:id="@+id/tvZone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvEvent"
+        android:layout_marginTop="10dp"
+        android:text="ZONE :"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:id="@+id/tvZoneTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_below="@id/tvEventTitle"
+        android:layout_marginTop="10dp"
+        android:text="VASAI_HEAD OFFICE"
+        android:layout_marginLeft="80dp"/>
+
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvZone"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/orange"
+        android:text="update Barcodes"
+        android:gravity="center"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="50dp"/>
+
+    <Button
+        android:id="@+id/btnSyncData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnUpdate"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/orange"
+        android:text="sync server data"
+        android:gravity="center"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="50dp"/>
+
+    <Button
+        android:id="@+id/btnDeviceReport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnSyncData"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/orange"
+        android:text="Device Report"
+        android:gravity="center"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="50dp"/>
+
+    <Button
+        android:id="@+id/btnReset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnDeviceReport"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/orange"
+        android:text="Reset Device &amp; logout"
+        android:gravity="center"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="50dp"/>
+
+    <Button
+        android:id="@+id/btnLoadAdminBarcodes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnReset"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/orange"
+        android:text="Load Admin Barcodes"
+        android:gravity="center"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="50dp"/>
+
+    <Button
+        android:id="@+id/btnLoadBarcodes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnLoadAdminBarcodes"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/orange"
+        android:text="Load Barcodes"
+        android:gravity="center"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="50dp"/>
+
+
+    <Button
+        android:id="@+id/btnStartScanning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnLoadBarcodes"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/green"
+        android:text="STart scanning"
+        android:gravity="center"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="50dp"/>
+
+    <CheckBox
+        android:id="@+id/chkManual"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnStartScanning"
+        android:layout_marginTop="30dp"
+        android:text="MANUAL"
+        android:layout_marginLeft="130dp"/>
+
+</RelativeLayout>

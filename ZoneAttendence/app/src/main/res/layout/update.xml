@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvUpdateAlert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Are you sure you want to update the barcodes?"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+    <TextView
+        android:id="@+id/tvUpdateCancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUpdateAlert"
+        android:text="CANCEL"
+        android:textSize="15sp"
+        android:textColor="@color/violet"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="150dp"/>
+
+    <TextView
+        android:id="@+id/tvUpdateOk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUpdateAlert"
+        android:text="OK"
+        android:textColor="@color/violet"
+        android:textSize="15sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="270dp"/>
+
+</RelativeLayout>
