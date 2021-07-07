@@ -55,9 +55,6 @@ public class ScannedBarcodeAcivity extends AppCompatActivity implements ServiceC
     private static final int REQUESTPERMISSIONS = 100;
     DbHelper dbHelper;
     SQLiteDatabase database;
-    public static final String FID_PACKAGE_NAME = "com.famoco.famocoid";
-
-    public static final String FID_SERVICE_NAME = "com.famoco.famocoid.FamocoIdService";
     private Intent mIntent;
     private BarcodeReader barcodeReader;
 
@@ -66,11 +63,12 @@ public class ScannedBarcodeAcivity extends AppCompatActivity implements ServiceC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scanned_barcode_acivity);
+        getSupportActionBar().setTitle("Scanner");
+
         Utils.context = this;
         dbHelper = new DbHelper();
         database = dbHelper.getWritableDatabase();
         mIntent = new Intent();
-        mIntent.setClassName(FID_PACKAGE_NAME, FID_SERVICE_NAME);
 
         // get the barcode reader instance
         barcodeReader = (BarcodeReader) getSupportFragmentManager().findFragmentById(R.id.barcode_scanner);
@@ -155,8 +153,6 @@ public class ScannedBarcodeAcivity extends AppCompatActivity implements ServiceC
     @Override
     protected void onResume() {
         super.onResume();
-        bindToFamocoDevice();
-        Log.e(TAG, "onResume: ");
     }
 
     @Override
@@ -257,43 +253,14 @@ public class ScannedBarcodeAcivity extends AppCompatActivity implements ServiceC
         finish();
     }
 
+
     @Override
-    public void onServiceConnected(ComponentName name, IBinder service) {
-        //Log.e(TAG, "onServiceConnected");
-        //Toast.makeText(this, "onServiceConnected", Toast.LENGTH_SHORT).show();
-        Log.e(TAG, "onServiceConnected");
-        FamocoDevice famocoDevice = null;
-        try {
-            famocoDevice = IRemoteInterface.Stub.asInterface(service).getFamocoDevice();
-        } catch (RemoteException e) {
-            Log.e(TAG, e.getMessage(), e);
-        }
+    public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
 
-        if (famocoDevice != null) {
-            String famocoId = famocoDevice.getFamocoId();
-            if (famocoId.contains(" ")) {
-                String strArr[] = famocoId.split(" ");
-                famocoId = strArr[0];
-            }
-            Utils.DEVICEID = famocoDevice.getFamocoId();
-            //Toast.makeText(this, "onServiceConnected ==> " + Utils.DEVICEID, Toast.LENGTH_SHORT).show();
-            Log.e("FAMOCO DEVICEID:", famocoId);
-        }
     }
-
-
 
     @Override
     public void onServiceDisconnected(ComponentName name) {
 
     }
-
-    private void bindToFamocoDevice() {
-        try {
-            bindService(mIntent, this, Context.BIND_AUTO_CREATE);
-        } catch (Exception e) {
-            Log.e(TAG, e.getMessage(), e);
-        }
-    }
-
 }

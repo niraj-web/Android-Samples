@@ -16,10 +16,6 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- * Created by mxmacmini on 04/06/18.
- */
-
 public class CheckInternet extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -86,10 +82,10 @@ public class CheckInternet extends BroadcastReceiver {
                 urlc.setRequestProperty("Connection", "close");
                 urlc.setConnectTimeout(1500);
                 urlc.connect();
-//                Log.e("is", "connected: " + (urlc.getResponseCode() == 200));
+
                 return (urlc.getResponseCode() == 200);
             } catch (IOException e) {
-//                Log.e("e", "Error checking internet connection " + e);
+
             }
             return false;
         }
@@ -97,7 +93,7 @@ public class CheckInternet extends BroadcastReceiver {
         @Override
         protected void onPostExecute(Boolean s) {
             LocalBroadcastManager manager = LocalBroadcastManager.getInstance(context);
-            // onReceive() will be called as a result of this call:
+
             manager.sendBroadcast(new Intent("android.net.wifi.WIFI_STATE_CHANGED").putExtra("isNetConnected", s).putExtra("isWiFiON", true));
         }
     }

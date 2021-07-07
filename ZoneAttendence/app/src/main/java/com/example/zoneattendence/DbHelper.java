@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 
@@ -20,12 +21,9 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 import static com.example.zoneattendence.utils.Utils.SYNCTYPE;
+import static com.example.zoneattendence.utils.Utils.context;
 import static com.example.zoneattendence.utils.Utils.getStringFromLocalDB;
 import static com.example.zoneattendence.utils.Utils.saveToLocalDB;
-
-/**
- * Created by mxmacmini on 29/05/18.
- */
 
 public class DbHelper extends SQLiteOpenHelper {
 
@@ -135,14 +133,14 @@ public class DbHelper extends SQLiteOpenHelper {
                 if (jsonObject.getInt("count") > 0) {
                     new MenuActivity().getBarCodeData();
                 } else if (cursor1.getCount() == jsonObject.getInt("totalRecords")) {
-                    Utils.mxAlert(jsonObject.getString("msg"));
+
                 } else {
-                    Utils.mxAlert("Internet Connection Error. Please try again...");
+                    Toast.makeText(context, "Internet Connection Error......Please Try Again", Toast.LENGTH_LONG).show();
                 }
             }
         } else {
             Utils.hideProgress();
-            Utils.mxAlert("Internet Connection Error. Please try again...");
+            Toast.makeText(context, "Internet Connection Error......Please Try Again", Toast.LENGTH_LONG).show();
         }
         cursor1.close();
     }
@@ -168,10 +166,9 @@ public class DbHelper extends SQLiteOpenHelper {
             if (id < 0) {
                 Log.v("ERROR INSERT:", "CANNOT INSERT MXADMINBARCODE");
             } else {
-                // Log.v("INSERT SETTING ID:", String.valueOf(id));
+
             }
         }
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -196,27 +193,24 @@ public class DbHelper extends SQLiteOpenHelper {
 
             HashMap<String, String> params = new HashMap<>();
             params.put("xAction", "syncBarcodeAttToServer");
-            //   params.put("zoneID", getStringFromLocalDB("zoneID")); ////// added by Hari 17 dec
+
             params.put("data", strMaster);
             params.put("deviceNo", Utils.DEVICEID);
 
             Log.e("zone", "syncAttendanceToServer: " + params);
-            mxCallService sr = new mxCallService(params, "Please Wait...", syncType);
-            sr.execute();
 
         } else {
             Utils.hideProgress();
             if (syncType == 1) {
                 if (cnt == 0) {
                     if (SYNCTYPE == 1)
-                        Utils.mxAlert("Sorry! No data to ReSync...");
+                        Toast.makeText(context, "No data Resync", Toast.LENGTH_LONG).show();
                     else
-                        Utils.mxAlert("Sorry! No data to Sync...");
+                        Toast.makeText(context, "No data Sync", Toast.LENGTH_LONG).show();
                 } else {
-                    Utils.mxAlert("Data Sync Successful...");
+                    Toast.makeText(context, "Data Sync Successfully", Toast.LENGTH_LONG).show();
                 }
             }
-
 
         }
         cursor.close();
@@ -242,9 +236,10 @@ public class DbHelper extends SQLiteOpenHelper {
             Utils.hideProgress();
             if (syncType == 1) {
                 if (cnt == 0) {
-                    Utils.mxAlert("Sorry! No data to sync...");
+                    Toast.makeText(context, "No data to sync...", Toast.LENGTH_LONG).show();
+
                 } else {
-                    Utils.mxAlert("Data sync successful...");
+                    Toast.makeText(context, "Data Sync Successfully", Toast.LENGTH_LONG).show();
                 }
             }
         }
@@ -254,11 +249,9 @@ public class DbHelper extends SQLiteOpenHelper {
         params.put("xAction", "syncBarcodeMasterToServer");
         params.put("data", strMaster);
         params.put("deviceNo", Utils.DEVICEID);
-        params.put("lastSyncDate", Utils.LASTSYNCDATETIME == null ? "" : Utils.LASTSYNCDATETIME); // added on 14 may 19  by hari
-        //Log.e("LASTSYNCDATETIME ", "dbhelper: "+Utils.LASTSYNCDATETIME );
+        params.put("lastSyncDate", Utils.LASTSYNCDATETIME == null ? "" : Utils.LASTSYNCDATETIME);
 
-        mxCallService sr = new mxCallService(params, "Please Wait...", syncType);
-        sr.execute();
+
     }
 
     public boolean checkAdminRecordsInDb(SQLiteDatabase database) {
@@ -280,14 +273,12 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     public int getAttendanceCount(SQLiteDatabase database, String barcodeNumber) {
-        //  Log.e("att", "getAttendanceCount: "+"SELECT barcodeNumber FROM " + DbHelper.MXATTENDANCE + " WHERE barcodeNumber=" + barcodeNumber );
         Cursor cursor = database.rawQuery("SELECT barcodeNumber FROM " + DbHelper.MXATTENDANCE + " WHERE barcodeNumber='" + barcodeNumber + "'", null);
         if (cursor.getCount() > 0) {
             cursor.close();
             return cursor.getCount();
         }
         return 0;
-
     }
 
 }

@@ -13,18 +13,20 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.zoneattendence.DbHelper;
 import com.example.zoneattendence.R;
 import com.example.zoneattendence.utils.Utils;
 
+import static com.example.zoneattendence.utils.Utils.context;
+
 public class SyncActivity extends AppCompatActivity {
     public CheckBox syncallowed;
     public static TextView syncedRec;
     static TextView unsyncedRec;
     Button btnSync;
-    Toolbar toolbar;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -35,15 +37,6 @@ public class SyncActivity extends AppCompatActivity {
 
         TextView totRec = findViewById(R.id.totRec);
         totRec.setText("" + getBarCodeCount());
-        toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("SYNC SERVER");
-        toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
         syncedRec = findViewById(R.id.syncedRec);
 
@@ -59,7 +52,7 @@ public class SyncActivity extends AppCompatActivity {
                     SQLiteDatabase db = mxDb.getWritableDatabase();
                     mxDb.syncAttendanceToServer(db, 0,1);
                 } else {
-                    Utils.mxAlert("Please Check Your Internet Connection");
+                    Toast.makeText(context, "Please check your Internet Connection", Toast.LENGTH_LONG).show();
                 }
             }
         });

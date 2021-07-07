@@ -72,7 +72,6 @@ public class MainActivity extends BaseActivity {
                 @Override
                 public void onSuccess(Object object) {
                     verifyDeviceModel = (VerifyDeviceModel) object;
-//                    Utils.showLongToast(mContext,projectAssModel.getMsg());
                     if (verifyDeviceModel != null) {
                         if (verifyDeviceModel.getCount() != null && verifyDeviceModel.getData() != null) {
 
@@ -91,7 +90,7 @@ public class MainActivity extends BaseActivity {
                 }
             });
         } else {
-            Utils.alert_dialog(MainActivity.this);
+
         }
     }
 }

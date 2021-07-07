@@ -12,7 +12,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.zoneattendence.R;
-import com.example.zoneattendence.ScannedActivity;
 import com.example.zoneattendence.utils.Utils;
 
 public class InformationActivity extends AppCompatActivity {
@@ -24,6 +23,7 @@ public class InformationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information);
+        getSupportActionBar().setTitle("Information");
 
         container = findViewById(R.id.container);
         btnNewScan = findViewById(R.id.btnNewScan);

@@ -23,22 +23,24 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.zoneattendence.DbHelper;
+import com.example.zoneattendence.Model.AdminBarcodeModel;
+import com.example.zoneattendence.Model.LoadBarcodeModel;
+import com.example.zoneattendence.Model.UpdateDeviceModel;
 import com.example.zoneattendence.R;
-import com.example.zoneattendence.ScannedActivity;
-import com.example.zoneattendence.SecondA;
-import com.example.zoneattendence.mxCallService;
+import com.example.zoneattendence.utils.ApiRequestHelper;
 import com.example.zoneattendence.utils.Utils;
 
 import java.util.HashMap;
 
-import static com.example.zoneattendence.utils.Utils.mxAlert;
+import static com.example.zoneattendence.utils.Utils.context;
 
-public class    MenuActivity extends AppCompatActivity implements View.OnClickListener {
+public class  MenuActivity extends BaseActivity {
 
-    Button update,synData,deviceReport,reset,scanning,btnLoadAdminBarcodes,btnLoadBarcodes;
-    public static TextView tvEventTitle,tvZoneTitle;
+    Button update, synData, deviceReport, reset, scanning, btnLoadAdminBarcodes, btnLoadBarcodes;
+    public static TextView tvEventTitle, tvZoneTitle;
 
     private static final String TAG = MenuActivity.class.getSimpleName();
     DbHelper dbHelper;
@@ -46,12 +48,15 @@ public class    MenuActivity extends AppCompatActivity implements View.OnClickLi
 
     private Dialog dialog;
     private ProgressDialog proDialog;
+    private AdminBarcodeModel adminBarcodeModel;
+    private LoadBarcodeModel loadBarcodeModel;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        getSupportActionBar().setTitle("Menu");
 
         update = (Button) findViewById(R.id.btnUpdate);
         synData = (Button) findViewById(R.id.btnSyncData);
@@ -123,42 +128,53 @@ public class    MenuActivity extends AppCompatActivity implements View.OnClickLi
         scanning.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Dialog dialog = new Dialog(MenuActivity.this);
-                dialog.setContentView(R.layout.scan);
-                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                dialog.setCanceledOnTouchOutside(true);
-                dialog.setCancelable(true);
-                dialog.show();
 
-                TextView allow = (TextView) dialog.findViewById(R.id.tvScanAllow);
-                TextView deny = (TextView) dialog.findViewById(R.id.tvScanDeny);
+                SQLiteDatabase database = dbHelper.getWritableDatabase();
+                if (dbHelper.checkAdminRecordsInDb(database)) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        if (ActivityCompat.checkSelfPermission(MenuActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                            ActivityCompat.requestPermissions(MenuActivity.this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUESTPERMISSIONS);
+                            Log.e(TAG, "surfaceCreated: ");
 
-                allow.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        startActivity(new Intent(MenuActivity.this, ScannedBarcodeAcivity.class));
+                            Intent intent = new Intent(MenuActivity.this, ScannedBarcodeAcivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                            finish();
+
+                        } else {
+                            Log.e(TAG, "camera opened: ");
+                            Intent intent = new Intent(MenuActivity.this, ScannedBarcodeAcivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                            finish();
+                        }
+                    } else {
+                        Intent intent = new Intent(MenuActivity.this, ScannedBarcodeAcivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        finish();
                     }
-                });
-                deny.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialog.dismiss();
-                    }
-                });
+
+                } else {
+                    Toast.makeText(context, "Please Load Admin Barcodes", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         btnLoadAdminBarcodes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this, FirstA.class));
+                getAdminBarCodeData();
+                Toast.makeText(context, "Admin Barcodes Loaded Successfully", Toast.LENGTH_LONG).show();
+
             }
         });
 
         btnLoadBarcodes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this, SecondA.class));
+                getBarCodeData();
+                Toast.makeText(context, "Barcodes Loaded", Toast.LENGTH_LONG).show();
 
             }
         });
@@ -183,6 +199,11 @@ public class    MenuActivity extends AppCompatActivity implements View.OnClickLi
         });
     }
 
+    @Override
+    protected int getActivityLayout() {
+        return R.layout.activity_menu;
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     public void mxConfirmAlert(String message, String isUpdateOrClear) {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(MenuActivity.this);
@@ -196,9 +217,6 @@ public class    MenuActivity extends AppCompatActivity implements View.OnClickLi
                     SQLiteDatabase database = dbHelper.getWritableDatabase();
                     database.execSQL("DELETE FROM " + DbHelper.MXBARCODE);
                     database.execSQL("DELETE FROM " + DbHelper.MXATTENDANCE);
-
-                    mxAlert("All the barcodes and attendance are deleted from device");
-
                 }
             });
         }
@@ -222,8 +240,6 @@ public class    MenuActivity extends AppCompatActivity implements View.OnClickLi
                         proDialog.setMessage("0" + " : Please Wait...");
                     }
 
-                    new mxCallService(getBarcodeList, "0" + " : Please Wait...", 1).execute();
-
                 }
             });
         }
@@ -241,15 +257,6 @@ public class    MenuActivity extends AppCompatActivity implements View.OnClickLi
         textView.setTextSize(25);
         textView.setPadding(50, 50, 50, 50);
         textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        /*final Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            public void run() {
-                if (dialog != null && dialog.isShowing()) {
-                    dialog.dismiss();
-                    timer.cancel();
-                }
-            }
-        }, 2000);*/
     }
 
     public static void updateEventName() {
@@ -271,107 +278,88 @@ public class    MenuActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    @Override
-    public void onClick(View v) {
-        if (v.getId() == R.id.btnReset) {
-            if (Utils.isConnected()) {
-                //Utils.showProgress("Please wait...");
-                mxConfirmAlert("Are you sure you want to delete all the barcodes and attendance from device? \n (Please sync data before deletion)", "clear");
+    private void getAdminBarCodeData() {
+        ProgressDialog dialog = new ProgressDialog(MenuActivity.this);
+        dialog.setMessage("Please Wait while data loading");
+        dialog.show();
 
-            } else {
-                mxAlert("Please Check Your Internet Connection");
-            }
+        HashMap<String, String> params = new HashMap<>();
+        params.put("xAction", "getAdminBarcodeList");
+        params.put("deviceNo", Utils.DEVICEID);
 
-        } else if (v.getId() == R.id.btnUpdate) {
-            if (Utils.isConnected()) {
-                //Utils.showProgress("Please wait...");
-                mxConfirmAlert("Are you sure you want to update the barcodes?", "update");
+        if (cd.isConnectingToInternet()) {
+            app.getApiRequestHelper().updateProjectAssign2(params, new ApiRequestHelper.OnRequestComplete() {
+                @Override
+                public void onSuccess(Object object) {
+                    adminBarcodeModel = (AdminBarcodeModel) object;
+//                    Utils.showLongToast(mContext,projectAssModel.getMsg());
+                    if (adminBarcodeModel != null) {
+                        if (adminBarcodeModel.getCount() != null && adminBarcodeModel.getAdminBarcodeList() != null) {
 
-            } else {
-                mxAlert("Please Check Your Internet Connection");
-            }
+                        } else {
 
-        } else if (v.getId() == R.id.btnLoadBarcodes) {
-            if (Utils.isConnected()) {
-                //Utils.showProgress("Please wait...");
-                getBarCodeData();
-            } else {
-                mxAlert("Please Check Your Internet Connection");
-            }
-
-        } else if (v.getId() == R.id.btnSyncData) {
-
-            Intent intent = new Intent(MenuActivity.this, SyncActivity.class);
-            startActivity(intent);
-
-        } else if (v.getId() == R.id.btnLoadAdminBarcodes) {
-
-            if (Utils.isConnected()) {
-                //Utils.showProgress("Please wait...");
-                getAdminBarCodeData();
-            } else {
-                mxAlert("Please Check Your Internet Connection");
-            }
-
-        } else if (v.getId() == R.id.btnStartScanning) {
-            SQLiteDatabase database = dbHelper.getWritableDatabase();
-            if (dbHelper.checkAdminRecordsInDb(database)) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    if (ActivityCompat.checkSelfPermission(MenuActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions(MenuActivity.this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUESTPERMISSIONS);
-                        Log.e(TAG, "surfaceCreated: ");
-                       /* Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                        finish();*/
-
+                        }
                     } else {
-                        Log.e(TAG, "camera opened: ");
-                        Intent intent = new Intent(MenuActivity.this, MainActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                        finish();
+                        Utils.showLongToast(MenuActivity.this, Utils.UNPROPER_RESPONSE);
                     }
-                } else {
-                    Intent intent = new Intent(MenuActivity.this, MainActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    finish();
+                    dialog.dismiss();
                 }
 
-            } else {
-                mxAlert("Please Load Admin Barcodes");
-            }
+                @Override
+                public void onFailure(String apiResponse) {
+                    Log.e("in", "error " + apiResponse);
+                    Utils.showLongToast(MenuActivity.this, apiResponse);
+                }
+            });
         } else {
-            Intent intent = new Intent(MenuActivity.this, DeviceReportActivity.class);
-            startActivity(intent);
+           // Utils.alert_dialog(MenuActivity.this);
         }
     }
 
-    private void getAdminBarCodeData() {
-        HashMap<String, String> getAdminBarcodeList = new HashMap<>();
-        getAdminBarcodeList.put("xAction", "getAdminBarcodeList");
-        getAdminBarcodeList.put("deviceNo", Utils.DEVICEID);
-
-        new mxCallService(getAdminBarcodeList, "Please Wait...", 1).execute();
-    }
-
     public void getBarCodeData() {
-        HashMap<String, String> getBarcodeList = new HashMap<>();
-        getBarcodeList.put("xAction", "getBarcodeList");
-        getBarcodeList.put("deviceNo", Utils.DEVICEID);
+
+        ProgressDialog dialog = new ProgressDialog(MenuActivity.this);
+        dialog.setMessage("Please Wait while data loading");
+        dialog.show();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("xAction", "getBarcodeList");
+        params.put("deviceNo", Utils.DEVICEID);
+
+        if (cd.isConnectingToInternet()) {
+            app.getApiRequestHelper().updateProjectAssign3(params, new ApiRequestHelper.OnRequestComplete() {
+                @Override
+                public void onSuccess(Object object) {
+                    loadBarcodeModel = (LoadBarcodeModel) object;
+                    if (loadBarcodeModel != null) {
+                        if (loadBarcodeModel.getCount() != null && loadBarcodeModel.getMsg() != null) {
+
+                        } else {
+
+                        }
+                    } else {
+                        Utils.showLongToast(MenuActivity.this, Utils.UNPROPER_RESPONSE);
+                    }
+                    dialog.dismiss();
+                }
+                @Override
+                public void onFailure(String apiResponse) {
+                    Log.e("in", "error " + apiResponse);
+                    Utils.showLongToast(MenuActivity.this, apiResponse);
+                }
+            });
+        } else {
+          //  Utils.alert_dialog(MenuActivity.this);
+        }
 
         int maxBarcodeID = getMaxId();
         Log.e(TAG, "onClick: " + maxBarcodeID);
-        getBarcodeList.put("maxBarcodeID", String.valueOf(maxBarcodeID));
+        params.put("maxBarcodeID", String.valueOf(maxBarcodeID));
 
         if (proDialog != null && proDialog.isShowing()) {
             proDialog.setMessage(maxBarcodeID + " : Please Wait...");
         }
-
-        new mxCallService(getBarcodeList, maxBarcodeID + " : Please Wait...", 1).execute();
     }
-
     private int getMaxId() {
         int maxID = 0;
         dbHelper = new DbHelper();
@@ -383,13 +371,10 @@ public class    MenuActivity extends AppCompatActivity implements View.OnClickLi
         cursor.close();
         return maxID;
     }
-
     @Override
     public void onBackPressed() {
         //super.onBackPressed();
-
     }
-
     @Override
     protected void onPause() {
         super.onPause();

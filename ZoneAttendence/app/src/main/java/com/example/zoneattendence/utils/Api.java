@@ -1,5 +1,7 @@
 package com.example.zoneattendence.utils;
 
+import com.example.zoneattendence.Model.AdminBarcodeModel;
+import com.example.zoneattendence.Model.LoadBarcodeModel;
 import com.example.zoneattendence.Model.UpdateDeviceModel;
 import com.example.zoneattendence.Model.VerifyDeviceModel;
 
@@ -22,6 +24,16 @@ public interface Api
     @POST("/zone-attendance/xadmin/services/")
         //@POST("/demos-mxprm/services/")
     Call<UpdateDeviceModel> Data1 (@FieldMap Map<String, String> params);
+
+    @FormUrlEncoded
+    @POST("/zone-attendance/xadmin/services/")
+        //@POST("/demos-mxprm/services/")
+    Call<AdminBarcodeModel> Data2 (@FieldMap Map<String, String> params);
+
+    @FormUrlEncoded
+    @POST("/zone-attendance/xadmin/services/")
+        //@POST("/demos-mxprm/services/")
+    Call<LoadBarcodeModel> Data3 (@FieldMap Map<String, String> params);
 
 }
 

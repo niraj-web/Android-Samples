@@ -5,6 +5,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.zoneattendence.Model.AdminBarcodeModel;
+import com.example.zoneattendence.Model.LoadBarcodeModel;
 import com.example.zoneattendence.Model.UpdateDeviceModel;
 import com.example.zoneattendence.Model.VerifyDeviceModel;
 import com.google.gson.Gson;
@@ -42,16 +44,14 @@ public class ApiRequestHelper
             instance = new com.example.zoneattendence.utils.ApiRequestHelper();
             instance.setApplication (app);
             gson = new GsonBuilder().setLenient ()
-                    .registerTypeAdapterFactory (new NullStringToEmptyAdapterFactory ())   // new LoginResponseModelDeserializer ()
+                    .registerTypeAdapterFactory (new NullStringToEmptyAdapterFactory ())
                     .create ();
             instance.createRestAdapter ();
         }
         return instance;
     }
 
-    /**
-     * REST Adapter Configuration
-     */
+
     private void createRestAdapter() {
         Retrofit.Builder builder = new Retrofit.Builder ().baseUrl (Utils.BASE_URL).addConverterFactory (GsonConverterFactory.create (gson));
         Retrofit retrofit = builder.client (getClient ().build ()).build ();
@@ -61,22 +61,19 @@ public class ApiRequestHelper
     @NonNull
     public OkHttpClient.Builder getClient() {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor ();
-// set your desired log level
+
         logging.setLevel (HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder ();
         httpClient.readTimeout (60, TimeUnit.SECONDS);
         httpClient.connectTimeout (60, TimeUnit.SECONDS);
-// add your other interceptors …
 
-// add logging as last interceptor
+
         httpClient.interceptors ().add (logging);
         return httpClient;
     }
 
-    /**
-     * End REST Adapter Configuration
-     */
+
 
     public App getApplication() {
         return app;
@@ -96,27 +93,6 @@ public class ApiRequestHelper
         }
     }
 
-    /**
-     * API Calls
-     */
-   /* public void login(Map<String, String> params, final OnRequestComplete onRequestComplete) {
-        Call<ProjectAssModel> call = appService.Project (params);
-        call.enqueue (new Callback<ProjectAssModel>() {
-            @Override
-            public void onResponse(Call<ProjectAssModel> call, Response<ProjectAssModel> response) {
-                if (response.isSuccessful ()) {
-                    onRequestComplete.onSuccess (response.body ());
-                } else {
-                    onRequestComplete.onFailure (Html.fromHtml (response.message ()) + "");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ProjectAssModel> call, Throwable t) {
-                handle_fail_response (t, onRequestComplete);
-            }
-        });
-    }*/
 
     public void updateProjectAssign(Map<String, String> params, final OnRequestComplete onRequestComplete) {
         Call<VerifyDeviceModel> call = appService.Data(params);
@@ -151,6 +127,44 @@ public class ApiRequestHelper
 
             @Override
             public void onFailure(Call<UpdateDeviceModel> call, Throwable t) {
+                handle_fail_response (t, onRequestComplete);
+            }
+        });
+    }
+
+    public void updateProjectAssign2(Map<String, String> params, final OnRequestComplete onRequestComplete) {
+        Call<AdminBarcodeModel> call = appService.Data2(params);
+        call.enqueue (new Callback<AdminBarcodeModel>() {
+            @Override
+            public void onResponse(Call<AdminBarcodeModel> call, Response<AdminBarcodeModel> response) {
+                if (response.isSuccessful ()) {
+                    onRequestComplete.onSuccess (response.body ());
+                } else {
+                    onRequestComplete.onFailure (Html.fromHtml (response.message ()) + "");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AdminBarcodeModel> call, Throwable t) {
+                handle_fail_response (t, onRequestComplete);
+            }
+        });
+    }
+
+    public void updateProjectAssign3(Map<String, String> params, final OnRequestComplete onRequestComplete) {
+        Call<LoadBarcodeModel> call = appService.Data3(params);
+        call.enqueue (new Callback<LoadBarcodeModel>() {
+            @Override
+            public void onResponse(Call<LoadBarcodeModel> call, Response<LoadBarcodeModel> response) {
+                if (response.isSuccessful ()) {
+                    onRequestComplete.onSuccess (response.body ());
+                } else {
+                    onRequestComplete.onFailure (Html.fromHtml (response.message ()) + "");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoadBarcodeModel> call, Throwable t) {
                 handle_fail_response (t, onRequestComplete);
             }
         });

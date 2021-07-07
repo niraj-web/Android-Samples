@@ -77,7 +77,7 @@ public class OtpActivity extends BaseActivity {
                 }
             });
         } else {
-            Utils.alert_dialog(OtpActivity.this);
+           // Utils.alert_dialog(OtpActivity.this);
         }
     }
 }

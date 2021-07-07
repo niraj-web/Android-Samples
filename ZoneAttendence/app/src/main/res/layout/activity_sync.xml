@@ -5,13 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:background="@color/design_default_color_primary_dark"
-        tools:targetApi="lollipop" />
-
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,7 +29,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/design_default_color_primary"
+            android:background="@color/design_default_color_primary_dark"
             android:gravity="center_vertical|right"
             android:padding="5dp"
             android:text="0.00"
@@ -68,7 +61,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/design_default_color_primary"
+            android:background="@color/design_default_color_primary_dark"
             android:gravity="center_vertical|right"
             android:padding="5dp"
             android:text="0.00"
@@ -100,7 +93,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/design_default_color_primary"
+            android:background="@color/design_default_color_primary_dark"
             android:gravity="center_vertical|right"
             android:padding="5dp"
             android:text="0.00"
@@ -123,12 +116,11 @@
         android:id="@+id/btnSync"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
         android:layout_marginTop="80dp"
         android:backgroundTint="@color/orange"
         android:gravity="center_vertical|center"
-        android:padding="20dp"
         android:text="SYNC SERVER"
         android:textColor="@android:color/white"
         android:textSize="18dp" />

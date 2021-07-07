@@ -24,15 +24,6 @@ public class DeviceReportActivity extends AppCompatActivity {
         setContentView(R.layout.activity_device_report);
         getSupportActionBar().setTitle("DEVICE REPORT");
 
-        toolbar = findViewById(R.id.toolbar);
-       /* toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
-        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_back));
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });*/
         txtTotalPresent = findViewById(R.id.txtTotalPresent);
         txtTotalAbsent = findViewById(R.id.txtTotalAbsent);
         txtTotalScanned = findViewById(R.id.txtTotalScanned);
@@ -47,10 +38,10 @@ public class DeviceReportActivity extends AppCompatActivity {
     }
 
     public void setRecordCount() {
-        txtTotalPresent.setText("1" + getPresentCount());
+        txtTotalPresent.setText("" + getPresentCount());
         txtTotalAbsent.setText("" + getAbsentCount());
         txtTotalScanned.setText("" + getTotalScannedCount());
-        txtTotalBarcodes.setText("3" + getTotalBarcodesCount());
+        txtTotalBarcodes.setText("" + getTotalBarcodesCount());
         txtDeviceAttendance.setText("" + getDeviceScannedCount());
     }
 
